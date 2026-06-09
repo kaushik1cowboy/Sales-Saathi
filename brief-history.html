@@ -116,13 +116,33 @@
                 },
 
                 async init() {
-                    // Wait for auth & db
                     setTimeout(async () => {
-                        if (!this.$store.auth.isLoggedIn) return; // auth.js will redirect
-                        const { db } = await import('./src/db.js');
-                        this.briefs = await db.getUserBriefs(this.$store.auth.user.id);
-                        this.loading = false;
-                    }, 800);
+                        try {
+                            const { db, supabase, isSupabaseConfigured } = await import('./src/db.js');
+                            
+                            let user = null;
+                            if (isSupabaseConfigured) {
+                                const { data } = await supabase.auth.getSession();
+                                user = data?.session?.user;
+                            } else {
+                                const mockSession = localStorage.getItem('sales_saathi_mock_session');
+                                if (mockSession) {
+                                    user = JSON.parse(mockSession);
+                                }
+                            }
+
+                            if (!user) {
+                                window.location.href = 'auth.html';
+                                return;
+                            }
+
+                            this.briefs = await db.getUserBriefs(user.id);
+                        } catch (err) {
+                            console.error("Failed to load briefs:", err);
+                        } finally {
+                            this.loading = false;
+                        }
+                    }, 150);
                 },
 
                 async deleteBrief(id) {

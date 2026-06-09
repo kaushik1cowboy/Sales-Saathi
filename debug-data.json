@@ -1,0 +1,119 @@
+{
+  "meetings": [
+    {
+      "id": "03cf5f65-f279-4e87-884e-a1f7535f18e0",
+      "meeting_title": "Discovery Call with Sirisha Peyyeti",
+      "meeting_datetime": "2026-06-09T17:20:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "85f52024-1ecc-488a-a9bf-cad617631f65",
+      "meeting_title": "Discovery Call with Bill Gates",
+      "meeting_datetime": "2026-06-10T15:31:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "ba07ea14-3125-47e1-a0c1-18d64c487cdd",
+      "meeting_title": "Discovery Call with mark zuckerberg",
+      "meeting_datetime": "2026-06-09T16:00:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "acb7ce81-5a39-498a-a068-574dda664739",
+      "meeting_title": "Discovery Call with Meeting Participant",
+      "meeting_datetime": "2026-06-08T07:09:59.103+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "6c7f55e5-c5c8-49c2-bb37-b06ce2ba2234",
+      "meeting_title": "Discovery Call with Meeting Participant",
+      "meeting_datetime": "2026-06-08T07:05:51.041+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "a852d751-0fc8-44b6-82be-fabfd8be3020",
+      "meeting_title": "Discovery Call with Meeting Participant",
+      "meeting_datetime": "2026-06-08T07:50:39.627+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "2010b931-ffea-4ff9-b9d5-75559627207c",
+      "meeting_title": "15 min 1-to-1 connect with Suraj Singh (Kaushik G)",
+      "meeting_datetime": "2026-06-08T12:00:00+00:00",
+      "reminder_sent": true,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "524182ee-629c-4ff1-bb52-9a5034121a32",
+      "meeting_title": "Sales Saathi test-2",
+      "meeting_datetime": "2026-06-08T13:00:00+00:00",
+      "reminder_sent": true,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "970b4513-c298-4a0f-8266-5c0468a70959",
+      "meeting_title": "One-on-One Doubt Resolutions - BITSOM_02 (Kaushik G)",
+      "meeting_datetime": "2026-06-08T16:30:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "ecc7640b-714d-4f9d-83ac-2eccedfc84d3",
+      "meeting_title": "Meeting with Narayana Murthy- Infosys",
+      "meeting_datetime": "2026-06-09T10:00:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "a42e034a-d577-42f1-abc2-326de30af407",
+      "meeting_title": "Happy birthday!",
+      "meeting_datetime": "2026-06-23T00:00:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "a145d492-aee3-456a-8b22-1ee5e80123b8",
+      "meeting_title": "Sinnuma's  birthday",
+      "meeting_datetime": "2026-06-23T00:00:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "c32b2f03-cfff-4dd5-a98a-362d3c30bd47",
+      "meeting_title": "Discovery Call with Daniel Zhang",
+      "meeting_datetime": "2026-06-08T15:50:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    },
+    {
+      "id": "fa0bb8b2-54a2-4c88-ae80-a6b866e9145a",
+      "meeting_title": "Discovery Call with Daniel Zhang",
+      "meeting_datetime": "2026-06-08T15:50:00+00:00",
+      "reminder_sent": false,
+      "user_id": "943a8645-4358-450f-8c34-c8efec898441"
+    }
+  ],
+  "users": [
+    {
+      "id": "71a31242-02a7-4381-9108-e85fa01df2e9",
+      "email": "kaushik1clasher@gmail.com",
+      "auto_email_briefs": true
+    },
+    {
+      "id": "265f17c1-8d79-4967-a9a2-68f37a3153cd",
+      "email": "rajat30.ai@gmail.com",
+      "auto_email_briefs": true
+    },
+    {
+      "id": "943a8645-4358-450f-8c34-c8efec898441",
+      "email": "kaushik1cowboy@gmail.com",
+      "auto_email_briefs": true
+    }
+  ]
+}

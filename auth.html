@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" x-data="{ 
-    activeScreen: window.location.hash === '#signup' ? 'signup' : 'login', 
+    activeScreen: window.location.hash.includes('type=recovery') ? 'reset' : (window.location.hash === '#signup' ? 'signup' : 'login'), 
     darkMode: true,
     loading: false,
     firstName: '',
@@ -15,6 +15,8 @@
     
     // Recovery State
     recoverySent: false,
+    recoveryEmail: '',
+    recoveryError: '',
     
     // OTP State
     otpSent: false,
@@ -103,6 +105,32 @@
             this.otpSent = true;
         } catch (error) {
             this.loginError = error.message;
+        } finally {
+            this.loading = false;
+        }
+    },
+
+    async handleRecovery() {
+        this.loading = true;
+        this.recoveryError = '';
+        try {
+            await this.$store.auth.resetPasswordForEmail(this.recoveryEmail);
+            this.recoverySent = true;
+        } catch (error) {
+            this.recoveryError = error.message;
+        } finally {
+            this.loading = false;
+        }
+    },
+
+    async handlePasswordReset() {
+        this.loading = true;
+        try {
+            await this.$store.auth.updatePassword(this.password);
+            alert('Password updated successfully!');
+            this.activeScreen = 'login';
+        } catch (error) {
+            alert('Error updating password: ' + error.message);
         } finally {
             this.loading = false;
         }
@@ -455,10 +483,13 @@
                         <p class="text-sm text-slate-500 dark:text-zinc-400 font-medium">No worries, we'll send you reset instructions.</p>
                     </div>
 
-                    <form @submit.prevent="loading = true; setTimeout(() => { loading = false; recoverySent = true; }, 1000)" class="space-y-5">
+                    <form @submit.prevent="handleRecovery()" class="space-y-5">
+                        <template x-if="recoveryError">
+                            <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 text-sm font-bold text-rose-600 dark:text-rose-400" x-text="recoveryError"></div>
+                        </template>
                         <div>
                             <label class="block text-sm font-bold text-slate-700 dark:text-zinc-300 mb-2">Email address</label>
-                            <input type="email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-darkInput border border-lightBorder dark:border-darkBorder text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brandIndigo/50 font-medium">
+                            <input type="email" x-model="recoveryEmail" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-darkInput border border-lightBorder dark:border-darkBorder text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brandIndigo/50 font-medium">
                         </div>
                         <button type="submit" :disabled="loading" class="relative w-full py-3.5 rounded-xl bg-gradient-to-b from-brandIndigo to-brandViolet text-white font-bold text-base shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex justify-center items-center">
                             <span x-show="!loading">Reset Password</span>
@@ -485,7 +516,7 @@
                     <p class="text-sm text-slate-500 dark:text-zinc-400 font-medium">Your new password must be different from previous used passwords.</p>
                 </div>
 
-                <form @submit.prevent="simulateAction('login')" class="space-y-5">
+                <form @submit.prevent="handlePasswordReset()" class="space-y-5">
                     <div>
                         <label class="block text-sm font-bold text-slate-700 dark:text-zinc-300 mb-2">New Password</label>
                         <div class="pw-wrap" x-data="{ showPw: false }">

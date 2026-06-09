@@ -27,7 +27,10 @@ const authStore = {
                 
                 console.log(`[AUTH] ${supabaseClientId} Attaching onAuthStateChange listener...`);
                 
-                if (window.__AUTH_INITIALIZED__) return;
+                if (window.__AUTH_INITIALIZED__) {
+                    this.loading = false;
+                    return;
+                }
                 window.__AUTH_INITIALIZED__ = true;
 
                 supabase.auth.onAuthStateChange(async (event, session) => {
@@ -150,7 +153,9 @@ const authStore = {
             if (window.location.pathname.endsWith('auth.html') || window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
                 // Prevent infinite redirect loops if we are already headed to the dashboard
                 if (window.location.pathname !== '/dashboard.html' && !window.location.pathname.endsWith('dashboard.html')) {
-                    window.location.href = 'dashboard.html';
+                    if (!window.location.hash.includes('type=recovery')) {
+                        window.location.href = 'dashboard.html';
+                    }
                 }
             }
         },
@@ -328,6 +333,29 @@ const authStore = {
                 setTimeout(() => window.location.reload(), 500);
             }
         },
+
+    async resetPasswordForEmail(email) {
+        if (isSupabaseConfigured) {
+            const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/auth.html#reset',
+            });
+            if (error) throw error;
+            return data;
+        } else {
+            // Mock Flow
+            return true;
+        }
+    },
+
+    async updatePassword(newPassword) {
+        if (isSupabaseConfigured) {
+            const { data, error } = await supabase.auth.updateUser({ password: newPassword });
+            if (error) throw error;
+            return data;
+        } else {
+            return true;
+        }
+    },
 
     async signOut() {
         if (isSupabaseConfigured) {
